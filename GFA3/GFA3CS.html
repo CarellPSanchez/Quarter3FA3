@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Randomizer Adventure</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-image: url('Celestial.webp');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed; 
+            height: 100vh;
+            margin: 0;
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .container {
+            background: rgba(0, 0, 0, 0.7); 
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 80%;
+            max-width: 600px;
+        }
+        button {
+            padding: 10px;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Randomizer Adventure</h1>
+        <button onclick="generateRandomStory()">Generate Story</button>
+        <p id="story"></p>
+    </div>
+    
+    <script>
+        function generateRandomStory() {
+            var num1 = Math.ceil(Math.random() * 20);
+            var num2 = Math.ceil(Math.random() * 20);
+            var num3 = Math.ceil(Math.random() * 20);
+            var largest = Math.max(num1, num2, num3);
+            var alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+            var nthLetter = alphabet[num1 - 1];
+            var totalMinutes = num2 * num3;
+            var hours = Math.floor(totalMinutes / 60);
+            var minutes = totalMinutes % 60;
+            var story = "You Obtained 3 Lucky Numbers: " + num1 + ", " + num2 + ", and " + num3 + ".<br>";
+            story += "The most useful number is: " + largest + "!<br>";
+            story += "The " + num1 + "th letter you can add to your journal is: " + nthLetter + "<br>";
+            story += "Total time in your journey so far: " + totalMinutes + " minutes is " + hours + " hours and " + minutes + " minutes.";
+            document.getElementById("story").innerHTML = story;
+        }
+    </script>
+</body>
+</html>
